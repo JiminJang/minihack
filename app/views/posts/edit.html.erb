@@ -1,0 +1,43 @@
+
+
+<%= form_for @post, html: { multipart: true } do |f| %>
+    <div class="container" style="width:40%">
+        
+        <h3 class="text-muted">사진 수정하기</h3>
+        
+ 
+
+ 
+            <!-- Form Name -->
+            <legend><h5>수정해보세요</h5></legend>
+ 
+        <div class="form ">
+            
+            <%= f.label :title %>
+            <%= f.text_field :title, class:'form-control input-md', :id => 'txtTitle'%>
+        </div>
+        <div class="field">
+            <%= f.label :content %>
+            <%= f.text_field :content , class:'form-control' %>
+        </div>
+        <div class="field">
+            <%= f.label :image %>
+            <%= f.file_field :image, class:'btn-file' %>
+        </div>
+        <div class="actions">
+            <p class="text-center">
+                <br>
+            <%= f.button :submit,class:'btn btn-primary', :id => 'singlebutton' %>
+            </p>
+        </div>
+    </div>
+
+<% end %>
+
+
+
+
+
+
+
+

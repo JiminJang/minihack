@@ -1,0 +1,41 @@
+<head>
+<style>
+    .con .btnn {
+        text-decoration: none;
+    	font-size: 15px;
+    	font-weight: bold;
+    	border: 1px solid #ddd;
+    	background-color: white;
+    	color: #555555;
+    	margin: 30px 10px 20px;
+    	display: inline-block;
+    	padding: 8px 30px;
+    	-webkit-transition: all 0.2s ease;
+    	transition: all 0.2s ease;
+    }
+    .btnn1 {
+        ;
+    }
+</style>
+<!--<link rel ="stylesheet" type="text/css" href="style.css">-->
+</head>
+
+<body>
+           
+	<div class="con" style="width:40%; margin:auto;">		
+        <h2>Title : <%= @post.title %> </h2>
+        <p> Content : <%= @post.content %></p>
+        
+        <%= image_tag @post.image.url, { :class=>"image-size" } %><br>
+        
+        
+       
+        <%= link_to "edit post" , edit_post_path, class:'btnn', :id => 'singlebutton' %>
+        <%= link_to "delete post" , post_path(@post), method: :delete, class:'btnn', :id => 'singlebutton', data: {confirm: "Are you sure?"} %>
+        
+       <form action="/posts/recommend" method="post">
+              <input type="hidden" name="id" value="<%= @post.id %>">
+              <button type="submit" class="btnn" style="margin-left: 100px"><span id="upcount_<%= @post.id %>"><%= @post.upcount %></span>&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button>
+        </form>
+    </div>
+</body>

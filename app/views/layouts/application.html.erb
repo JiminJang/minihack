@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Optional theme
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  -->
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+    <div class="container">
+      <div class="header clearfix">
+           <h3 class="text-muted"> 
+           <%= link_to "main" , root_path, { :class=>"navbar-brand" }  %></h3>
+        <nav>
+          <ul class="nav nav-pills pull-right" >
+            <li role="presentation">
+              <% if user_signed_in? %>
+                <li role="presentation">
+                <%= link_to '로그아웃', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %>
+                <% else %>
+                </li>
+                <li role="presentation">
+                <%= link_to '로그인', new_user_session_path %>
+                
+               </li>
+              <li role="presentation">
+                <%= link_to '회원가입', new_user_registration_path%>
+              </li>
+              <% end %>
+                <li role="presentation">
+                  <%= link_to 'Upload', new_post_path %>
+              </li>
+          </ul>
+        </nav>
+       
+      </div>
+    </div>
+<%= yield %>
+
+</body>
+</html>
